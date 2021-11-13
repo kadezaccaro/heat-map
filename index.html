@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 Heat Map</title>
+
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-scale@4" defer></script>
+    <script
+      src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"
+      defer
+    ></script>
+    <script src="app.js" defer></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        margin: 0;
+      }
+
+      main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-weight: 400;
+        margin: 5px;
+        text-align: center;
+      }
+
+      p {
+        margin: 11px 0px 11px 0px;
+      }
+
+      #d3-container {
+        position: relative;
+      }
+
+      .cell:hover {
+        fill: black;
+      }
+
+      #tooltip {
+        position: absolute;
+        pointer-events: none; /* Prevent tooltip from flashing when mouse is moving */
+        padding: 20px;
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+
+      #legend {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        color: white;
+      }
+
+      #color-blocks {
+        width: 30px;
+        height: 120px;
+      }
+      #color-text {
+        padding-left: 10px;
+      }
+
+      .axisWhite line {
+        stroke: white;
+      }
+      .axisWhite path {
+        stroke: white;
+      }
+      .axisWhite text {
+        fill: white;
+      }
+
+      .base-temp {
+        color: #ffeaa7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1 id="title">Monthly Global Land-Surface Temperature</h1>
+      <h2 id="description">
+        Temperatures from 1753 to 2015.
+        <span class="base-temp">Base temperature is 8.66℃</span>
+      </h2>
+      <div id="d3-container"></div>
+      <div id="legend">
+        <svg id="color-blocks">
+          <rect x="0" y="0" width="30px" height="30px" style="fill: #81ecec" />
+          <rect x="0" y="30" width="30px" height="30px" style="fill: #ffeaa7" />
+          <rect x="0" y="60" width="30px" height="30px" style="fill: #fab1a0" />
+          <rect x="0" y="90" width="30px" height="30px" style="fill: #ff7675" />
+        </svg>
+        <div id="color-text">
+          <p>Variance of -1℃ or less</p>
+          <p>On or below base temperature</p>
+          <p>Above base temperature</p>
+          <p>Variance of +1℃ or more</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
